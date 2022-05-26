@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GGV receiver's coverage</title>
+    <style>
+        #map{
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>GOOGLE MAP</h1>
+    <div id="map"></div>
+    <script>
+        function initMap() {
+            // map options
+            var options = {
+                zoom: 10,
+                center:{lat:-1.9437057, lng: 29.8805778 }
+            }
+
+            // new map object
+            var map = new google.maps.Map(document.getElementById('map'), options)
+
+            var marker = new google.maps.Marker({
+                position: {lat:-1.9500, lng: 30.0589 },
+                map: map
+                // icon: 'map'
+            })
+
+            var infoWindow = new google.maps.InfoWindow({
+                content: "Kigali, Rwanda"
+            })
+
+            marker.addListener('click', function() {
+                infoWindow.open(map, marker)
+            })
+
+        }
+    </script>
+    <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlWnvLoFl72OeO3FpOkFBObwN5Vr6EkZA &callback=initMap">
+    </script>
+</body>
+</html>
