@@ -21,25 +21,72 @@
             var options = {
                 zoom: 10,
                 center:{lat:-1.9437057, lng: 29.8805778 }
-            }
+            };
 
             // new map object
-            var map = new google.maps.Map(document.getElementById('map'), options)
+            var map = new google.maps.Map(document.getElementById('map'), options);
 
-            var marker = new google.maps.Marker({
-                position: {lat:-1.9500, lng: 30.0589 },
-                map: map
-                // icon: 'map'
-            })
+            // listen for a click on anywhere on the map
 
-            var infoWindow = new google.maps.InfoWindow({
-                content: "Kigali, Rwanda"
-            })
+            google.maps.event.addListener(map, 'click', function(e) {
+                addMarker({location: e.latLng});
+            });
 
-            marker.addListener('click', function() {
-                infoWindow.open(map, marker)
-            })
+            // var marker = new google.maps.Marker({
+            //     position: {lat:-1.9500, lng: 30.0589 },
+            //     map: map
+            //     // icon: 'map'
+            // });
 
+            // var infoWindow = new google.maps.InfoWindow({
+            //     content: "Kigali, Rwanda"
+            // });
+
+            // marker.addListener('click', function() {
+            //     infoWindow.open(map, marker)
+            // });
+
+
+            function addMarker(props) {
+                var marker = new google.maps.Marker({
+                    position: props.location,
+                    map: map,
+                });
+
+                if (props.iconImg){
+                    marker.setIcon(props.iconImg);
+                };
+
+                if (props.content) {
+                    var infoWindow = new google.maps.InfoWindow({
+                        content: props.content
+                    });
+
+                    marker.addListener('click', function() {
+                        infoWindow.open(map, marker)
+                    });
+                }
+                
+            };
+
+            var markersList = [
+                {
+                    location:{lat:-1.9500, lng: 30.0589 },
+                    content: 'Kigali'
+                },
+
+                {
+                    location:{lat:-2.008570, lng: 30.135835},
+                    iconImg: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+                    content: 'Kicukiro'
+                }
+
+            ];
+            
+            for (var i = 0; i< markersList.length; i++) {
+                addMarker(markersList[i]);
+            }
+            
         }
     </script>
     <script async
