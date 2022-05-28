@@ -16,11 +16,8 @@ app.use(express.json());
 // access the routes
 app.use(router);
 
-// app.get('/', function (req, res) {
-//     res.send('we are home');
-// });
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 // listens to the server and the port it is running on
 app.listen(port, () => {

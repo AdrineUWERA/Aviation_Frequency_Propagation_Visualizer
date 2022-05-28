@@ -3,12 +3,12 @@ import {addReceiver, getAllReceivers, deleteReceiver, getSpecificReceiver} from 
 
 const router = express.Router();
 
-router.post("/receiver", addReceiver);
+router.post("/receivers", addReceiver);
 
-router.get("/receiver", getAllReceivers);
+router.get("/receivers", getAllReceivers);
 
-router.get("/receiver/:id", getSpecificReceiver);
+router.get("/receivers/:id", getSpecificReceiver);
 
-router.delete("/receiver/:id", deleteReceiver);
+router.delete("/receivers/:id", deleteReceiver);
 
 export default router;
