@@ -1,5 +1,15 @@
 
 const ReceiverList = ({receivers}) => { 
+    const handleDelete = async (id) => {
+        await fetch(`http://localhost:5000/receivers/${id}`, {
+            method: "DELETE"
+        }).then(res => res.json())
+            .then((data) => {
+                console.log(data);
+                console.log("data deleted");
+            },
+            (error) => console.log(error))
+    }
     return (
         <div className="container mt-5 mb-5 pb-5 col-lg-12" style={{ border: '3px solid green' }}>
             <h1 className="text-center mt-5 mb-5" style={{ color: 'green' }}>ALL RECEIVERS</h1>
@@ -15,7 +25,8 @@ const ReceiverList = ({receivers}) => {
                     <div>
                         <img src="https://cdn.onlinewebfonts.com/svg/img_96165.png" 
                         className="me-3"
-                        style={{ width: '20px', height: 'auto', cursor: 'pointer'}}></img>
+                        style={{ width: '20px', height: 'auto', cursor: 'pointer'}}
+                        onClick={(e) => handleDelete(receiver._id)}></img>
                     </div>
                                    
                 </div>

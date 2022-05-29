@@ -1,37 +1,36 @@
 import {useState} from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+
 function AddReceiver() {
     const [latitude, setLatitude] = useState();
     const [longitude, setLongitude] = useState();
     const [coverage, setCoverage] = useState();
+    const history = useHistory();
 
     const handleSubmit = async(e) => {
         e.preventDefault();
         const receiver = { latitude, longitude, coverage };
-        console.log(receiver);
-        let form = new FormData()
-        form.append("latitude", latitude)
-        form.append("longitude", longitude)
-        form.append("coverage", coverage) 
-        // await fetch("https://reddit-backend-clone.herokuapp.com/api/v1/posts", {
-        //     method: "POST",
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: form
-        // }).then(res => res.json())
-        //     .then((data) => {
-        //         console.log(data)
-        //         alert('Receiver added!');
-        //         history.push("/")
-        //     },
-        //     (error) => console.log(error))
+        console.log(receiver); 
+        await fetch("http://localhost:5000/receivers", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(receiver)
+        }).then(res => res.json())
+            .then((data) => {
+                console.log(data)
+                alert('Receiver added!');
+                history.push("/receivers")
+            },
+            (error) => console.log(error))
     }
 
     return(
         <div className="container mt-5 mb-5 col-lg-5" style={{ border: '3px solid green' }}>
             <h1 className="text-center mt-5 mb-3" style={{ color: 'green' }}>ADD RECEIVER</h1>
             <div className="row justify-content-center my-5 me-2 ms-2"> 
-                <form onSubmit={handleSubmit}>
+                <form>
                     <div className="form-group">
                         <label for="latitude" className="text-left mb-3">Latitude:</label>
                         <input type="number"

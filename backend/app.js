@@ -2,6 +2,7 @@ import connectDB from "./data/db_connect.js";
 import express from "express";
 import dotenv from "dotenv";
 import router from "./routes/receiverRoutes.js";
+import cors from "cors" 
 
 dotenv.config();
 
@@ -9,6 +10,8 @@ const app = express();
 
 //connect to the mongodb
 connectDB;
+
+app.use(cors());
 
 // Body parser
 app.use(express.json());
