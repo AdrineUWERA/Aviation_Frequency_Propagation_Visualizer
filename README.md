@@ -1,5 +1,12 @@
 # Aviation Frequency Propagation Simulator
 
+## Links
+
+Deployed app: https://aviation-f-propagation-fe.herokuapp.com/
+Deployed APIs: https://aviation-f-propagation-be.herokuapp.com/receivers
+Video: https://youtu.be/sq7K6kUZz-k
+
+
 ## Solution description
 
 This application is built using:
