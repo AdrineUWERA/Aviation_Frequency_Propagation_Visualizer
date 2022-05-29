@@ -6,6 +6,10 @@ Deployed app: https://aviation-f-propagation-fe.herokuapp.com/
 Deployed APIs: https://aviation-f-propagation-be.herokuapp.com/receivers
 Video: https://youtu.be/sq7K6kUZz-k
 
+Github repos used for the deployment:
+1. https://github.com/AdrineUWERA/aviation_frequency_propagation_visualizer_frontend
+2. https://github.com/AdrineUWERA/aviation_frequency_propagation_visualizer_backend
+
 
 ## Solution description
 
