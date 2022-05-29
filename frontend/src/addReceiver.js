@@ -1,11 +1,9 @@
-import {useState} from 'react';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import React, { useState } from "react"; 
 
 function AddReceiver() {
     const [latitude, setLatitude] = useState();
     const [longitude, setLongitude] = useState();
-    const [coverage, setCoverage] = useState();
-    const history = useHistory();
+    const [coverage, setCoverage] = useState(); 
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -20,8 +18,7 @@ function AddReceiver() {
         }).then(res => res.json())
             .then((data) => {
                 console.log(data)
-                alert('Receiver added!');
-                history.push("/receivers")
+                alert('Receiver added!'); 
             },
             (error) => console.log(error))
     }

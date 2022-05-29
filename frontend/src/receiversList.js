@@ -1,3 +1,4 @@
+import React from "react";
 
 const ReceiverList = ({receivers}) => { 
     const handleDelete = async (id) => {
@@ -26,7 +27,8 @@ const ReceiverList = ({receivers}) => {
                         <img src="https://cdn.onlinewebfonts.com/svg/img_96165.png" 
                         className="me-3"
                         style={{ width: '20px', height: 'auto', cursor: 'pointer'}}
-                        onClick={(e) => handleDelete(receiver._id)}></img>
+                        onClick={(e) => handleDelete(receiver._id)}
+                        alt="Delete"></img>
                     </div>
                                    
                 </div>
